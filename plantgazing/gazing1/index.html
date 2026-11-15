@@ -48,36 +48,45 @@
 <script>
 let lastManualScroll = 0;
 let lastTime = 0;
+let pos = null; // 소수점까지 누적하는 현재 위치
 
 const speed = 25; // 초당 스크롤 속도 (px)
 
-window.addEventListener("wheel", function() {
-  lastManualScroll = Date.now();
+// 사용자가 직접 스크롤하면 잠시 멈추고, 위치를 다시 동기화
+["wheel", "touchstart", "keydown", "mousedown"].forEach(function(evt) {
+  window.addEventListener(evt, function() {
+    lastManualScroll = Date.now();
+    pos = null;
+  });
 });
 
 function autoScroll(time) {
   if (!lastTime) lastTime = time;
 
-  const delta = time - lastTime;
+  const delta = Math.min(time - lastTime, 100); // 탭 전환 후 튀는 것 방지
   lastTime = time;
 
-  // 마우스 스크롤 후 1초 동안 자동 스크롤 멈춤
   if (!window.autoScrollPaused && Date.now() - lastManualScroll > 1000) {
 
-    // 페이지 맨 아래에 도달하면 멈춤
-    const atBottom =
-      window.innerHeight + window.scrollY >=
-      document.documentElement.scrollHeight - 1;
+    const maxScroll =
+      document.documentElement.scrollHeight - window.innerHeight;
 
-    if (!atBottom) {
-      window.scrollBy(0, speed * delta / 1000);
+    if (pos === null) pos = window.scrollY;
+
+    if (pos < maxScroll) {
+      pos += speed * delta / 1000;
+      window.scrollTo(0, pos);
     }
+  } else {
+    pos = null;
   }
 
   requestAnimationFrame(autoScroll);
 }
 
-requestAnimationFrame(autoScroll);
+window.addEventListener("load", function() {
+  requestAnimationFrame(autoScroll);
+});
 </script>
 
 
