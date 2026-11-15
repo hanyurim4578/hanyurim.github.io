@@ -5,7 +5,6 @@
 }
 
 
-
 /* 상단바 */
 a {
   text-decoration: none;
@@ -17,51 +16,53 @@ a {
   gap: 30px;
 }
 
-
-/* 이미지 가로로 배치 */
+/* 이미지 가로 배치 및 스크롤 */
 .works-container {
   display: flex;
   flex-direction: row;
-  gap: 20px;
-  align-items: flex-start;
-}
+  gap: 15px;
 
-.works-item img {
-  width: 300px;
-  height: auto;
-  display: block;
-}
+  align-items: center;
+  
 
-.works-item img {
-  width: 300px;
-  height: auto;
-  display: block;
-}
+  height: calc(100vh - 80px);
 
-/* 이미지 가로로 스크롤 */
-.works-container {
-  display: flex;
-  gap: 20px;
   overflow-x: auto;
   overflow-y: hidden;
+
+
+/* 스크롤바 숨기기 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE, Edge */
+}
+ 
+/* Chrome, Safari 스크롤바 숨기기 */
+.works-container::-webkit-scrollbar {
+  display: none;
 }
 
-/* 일기장으로 들어가기 */
+/* 이미지 크기 */
+.works-item {
+  flex-shrink: 0;
+}
+
+.works-item img {
+  height: 500px;
+  width: auto;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+/* 이미지 클릭 및 마우스 오버 */
 .works-item a {
   display: block;
   cursor: pointer;
 }
 
-.works-item img {
-  width: 250px;
-  height: auto;
-  display: block;
-  transition: opacity 0.3s ease;
-}
-
 .works-item img:hover {
   opacity: 0.7;
 }
+
 
 
 

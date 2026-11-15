@@ -17,6 +17,22 @@ a {
   gap: 30px;
 }
 
+/* plantgazing으로 넘어가기 */
+.stay-more {
+  text-align: center;
+  margin: 80px 0 50px;
+}
+
+.stay-more a {
+  color: black;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.stay-more a:hover {
+  opacity: 0.35;
+}
+
 
 
 

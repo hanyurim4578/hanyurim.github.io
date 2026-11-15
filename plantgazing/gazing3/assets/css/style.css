@@ -1,0 +1,126 @@
+		*{
+ margin : 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+
+
+
+/* 상단바 */
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.mainclick {
+  display: flex;
+  gap: 30px;
+}
+
+/* 작품 이미지 */
+.yeonsang-full {
+  width: 100%;
+}
+
+.yeonsang-full img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 브라우저 확대 시 이미지 너비 유지 */
+@media screen {
+  .yeonsang-full img {
+    min-width: 1200px;
+  }
+}
+
+/* 문단 사이 넓히는 거 */
+.space {
+  margin-top: 30px;
+}
+
+/* 랜덤 문장이 나타나는 영역 */
+.yeonsang-full {
+  position: relative;
+  width: 100%;
+}
+
+/* 랜덤 문장 */
+
+.random-sentence {
+  position: absolute;
+  display: none;
+
+  transform: translate(-50%, -50%);
+
+  font-size: 20px;
+  color: black;
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+/* 이미지 클릭 가능 표시 */
+.yeonsang-full img {
+  cursor: pointer;
+}
+
+/* 팝업 배경 */
+.text-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+
+  justify-content: center;
+  align-items: center;
+}
+
+/* 흰색 팝업창 */
+.text-popup-content {
+  position: relative;
+  width: 500px;
+  min-height: 250px;
+  background: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 50px;
+}
+
+/* 닫기 버튼 */
+.close-popup {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+
+  border: none;
+  background: none;
+
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* 문장 */
+#randomSentence {
+  font-size: 18px;
+  color: black;
+  text-align: center;
+  line-height: 1.8;
+}
+
+
+
+
+
+
+@media screen and (max-width: 704px) {
+}

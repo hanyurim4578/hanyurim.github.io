@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>gazing3</title>
+	<meta name="description" content="설명">
+	<meta name="keywords" content="키워드1, 키워드2">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+</head>
+<body>
+
+<!-- 상단바 -->
+<div class="mainclick">
+<h3><a href="../../intro/index.html">INTRO</a></h3>
+<h3><a href="../../works/index.html">WORKS</a></h3>
+<h3><a href="../index.html">PLANT GAZING</a></h3>
+</div>
+
+<!-- 클릭해주세요!! -->
+<p class="space">"가장 눈에 오래 머무르는 아이를 골라보세요"</p>
+
+<!-- 작품사진 -->
+<div class="yeonsang-full" id="randomTextArea">
+
+  <img src="../../worksimage/img_nine.jpg" alt="연상 작품 3">
+
+</div>
+
+<!-- 랜덤 문장 팝업 -->
+<div id="textPopup" class="text-popup">
+  <div class="text-popup-content">
+
+    <button class="close-popup" onclick="closeTextPopup()">×</button>
+
+    <p id="randomSentence"></p>
+
+  </div>
+</div>
+
+<!-- 첫페이지로 돌아가기 -->
+<div class="bottom-home">
+  <p class="space"><a href="../../index.html">HOME</a></p>
+</div>
+
+<!-- 자동으로 내려가기 -->
+<script>
+let lastManualScroll = 0;
+let lastTime = 0;
+
+const speed = 28; // 초당 스크롤 속도 (px)
+
+window.addEventListener("wheel", function() {
+  lastManualScroll = Date.now();
+});
+
+function autoScroll(time) {
+  if (!lastTime) lastTime = time;
+
+  const delta = time - lastTime;
+  lastTime = time;
+
+  // 마우스 스크롤 후 1초 동안 자동 스크롤 멈춤
+  if (!window.autoScrollPaused && Date.now() - lastManualScroll > 1000) {
+
+    // 페이지 맨 아래에 도달하면 멈춤
+    const atBottom =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 1;
+
+    if (!atBottom) {
+      window.scrollBy(0, speed * delta / 1000);
+    }
+  }
+
+  requestAnimationFrame(autoScroll);
+}
+
+requestAnimationFrame(autoScroll);
+</script>
+
+
+<!-- 랜덤으로 답변 -->
+<script>
+const area = document.getElementById("randomTextArea");
+const popup = document.getElementById("textPopup");
+const sentence = document.getElementById("randomSentence");
+
+// 랜덤 문장 목록
+const sentences = [
+  "A",
+  "B",
+  "C"
+];
+
+let previousSentence = -1;
+
+// 이미지 클릭 시 팝업 열기
+area.addEventListener("click", function() {
+
+  let randomIndex;
+
+  do {
+    randomIndex = Math.floor(Math.random() * sentences.length);
+  } while (randomIndex === previousSentence);
+
+  previousSentence = randomIndex;
+
+  sentence.textContent = sentences[randomIndex];
+
+  popup.style.display = "flex";
+
+  // 자동 스크롤 멈추기
+  window.autoScrollPaused = true;
+
+});
+
+// X 버튼 클릭 시 팝업 닫기
+function closeTextPopup() {
+
+  popup.style.display = "none";
+
+  // 자동 스크롤 다시 시작
+  window.autoScrollPaused = false;
+
+}
+</script>
+
+
+
+
+	<script src="assets/js/script.js"></script>
+</body>
+</html>
