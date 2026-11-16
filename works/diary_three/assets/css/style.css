@@ -43,5 +43,21 @@ a {
   text-align: left;
 
 
+/* diary GIF */
+.diary-gif {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.diary-gif img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}  
+
+
+
 @media screen and (max-width: 704px) {
 }
