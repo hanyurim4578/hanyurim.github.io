@@ -1,1 +1,1 @@
-const speed = 25;
+const speed = 20;
