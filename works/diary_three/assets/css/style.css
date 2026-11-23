@@ -41,21 +41,22 @@ a {
 .work-text {
   width: 250px;
   text-align: left;
+}
 
 
 /* diary GIF */
 .diary-gif {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
 }
 
 .diary-gif img {
-    max-width: 100%;
+    width: 30%;
     height: auto;
     display: block;
-}  
+}
 
 
 
